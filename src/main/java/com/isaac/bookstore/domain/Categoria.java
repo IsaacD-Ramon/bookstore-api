@@ -25,13 +25,16 @@ public class Categoria implements Serializable {
     private List<Livro> livros = new ArrayList<>();
 
     public Categoria() {
+        super();
     }
 
-    public Categoria(int id, String nome, String descricao) {
+    public Categoria(int id, String nome, String descricao) {   
+        super();
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
     }
+    
 
     public int getId() {
         return id;

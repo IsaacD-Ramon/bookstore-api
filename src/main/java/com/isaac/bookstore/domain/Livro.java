@@ -1,4 +1,4 @@
-package domain;
+package com.isaac.bookstore.domain;
 
 import java.io.Serializable;
 

@@ -19,6 +19,7 @@ public class DBService {
     @Autowired
     private CategoriaRepository categoriaRepository;
 
+    @SuppressWarnings("null")
     public void instanciaBaseDados() {
 
         Categoria cat1 = new Categoria(0, "Amor", "o livor sobre seu amor isinhaaaaaaaa");

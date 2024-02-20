@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.isaac.bookstore.domain.Categoria;
@@ -43,7 +44,12 @@ public class CategoriaService {
 
 	public void delete(Integer id) {
 		findById(id);
-		repository.deleteById(id);
+		try {
+			repository.deleteById(id);
+		} catch (DataIntegrityViolationException e) {
+			throw new com.isaac.bookstore.service.exceptions.DataIntegrityViolationException(
+					"A Categoria não pode ser apaga por conta que existem livros com esssa categoria");
+		}
 
 	}
 

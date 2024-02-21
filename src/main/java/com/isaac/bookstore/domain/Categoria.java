@@ -4,11 +4,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.validator.constraints.Length;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotEmpty;
 
 @Entity
 public class Categoria implements Serializable {
@@ -18,7 +21,13 @@ public class Categoria implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    
+    @NotEmpty(message = "Campo NOME é Obrigatorio")
+    @Length(min = 3, max = 20, message = "O Campo Nome deve ter no minimo 3 e no maximo 20" )
     private String nome;
+    
+    @NotEmpty(message = "Campo DESCRICÃO é Obrigatorio")
+    @Length(min = 3, max = 200, message = "O Campo Descricão deve ter no minimo 3 e no maximo 200" )
     private String descricao;
 
     @OneToMany(mappedBy = "categoria")

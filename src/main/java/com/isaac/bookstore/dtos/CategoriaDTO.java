@@ -2,16 +2,26 @@ package com.isaac.bookstore.dtos;
 
 import java.io.Serializable;
 
+import org.hibernate.validator.constraints.Length;
+
 import com.isaac.bookstore.domain.Categoria;
+
+import jakarta.validation.constraints.NotEmpty;
 
 public class CategoriaDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	private int id;
+	
+	@NotEmpty(message = "Campo NOME é Obrigatorio")
+    @Length(min = 3, max = 20, message = "O Campo Nome deve ter no minimo 3 e no maximo 20" )
 	private String nome;
+	    
+	@NotEmpty(message = "Campo DESCRICÃO é Obrigatorio")
+	@Length(min = 3, max = 200, message = "O Campo Descricão deve ter no minimo 3 e no maximo 200" )
 	private String descricao;
-
+	
 	public CategoriaDTO() {
 		super();
 		// TODO Auto-generated constructor stub

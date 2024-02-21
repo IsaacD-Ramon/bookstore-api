@@ -21,6 +21,8 @@ import com.isaac.bookstore.domain.Livro;
 import com.isaac.bookstore.dtos.LivroDTO;
 import com.isaac.bookstore.service.LivroService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping(value = "/livros")
 public class LivroResource {
@@ -43,22 +45,22 @@ public class LivroResource {
 	}
 
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Livro> update(@PathVariable Integer id, @RequestBody Livro obj) {
+	public ResponseEntity<Livro> update(@PathVariable Integer id, @Valid  @RequestBody Livro obj) {
 		Livro newobj = service.update(id, obj);
 		return ResponseEntity.ok().body(newobj);
 	}
 
 	@PostMapping
 	public ResponseEntity<Livro> create(@RequestParam(value = "categoria", defaultValue = "0") Integer id_cat,
-			@RequestBody Livro obj) {
+			@Valid @RequestBody Livro obj) {
 		Livro newObj = service.create(id_cat, obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/livros/{id}")
 				.buildAndExpand(newObj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
-	
+
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Void> delete(@PathVariable Integer id){
+	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}

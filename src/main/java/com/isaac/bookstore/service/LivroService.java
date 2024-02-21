@@ -31,4 +31,17 @@ public class LivroService {
 
 	}
 
+	public Livro update(Integer id, Livro obj) {
+		Livro newobj = findById(id);
+		updateData(obj, newobj);
+		return repository.save(newobj);
+	}
+
+	private void updateData(Livro obj, Livro newobj) {
+		newobj.setTitulo(obj.getTitulo());
+		newobj.setNome_autor(obj.getNome_autor());
+		newobj.setTexto(obj.getTexto());
+
+	}
+
 }

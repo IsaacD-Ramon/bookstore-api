@@ -19,12 +19,11 @@ public class DBService {
     @Autowired
     private CategoriaRepository categoriaRepository;
 
-    @SuppressWarnings("null")
     public void instanciaBaseDados() {
 
         Categoria cat1 = new Categoria(0, "Amor", "o livor sobre seu amor isinhaaaaaaaa");
 
-        Livro l1 = new Livro(0, "meu grande amorrr", "sobre meu grande amor isinhaa",
+        Livro l1 = new Livro(0, "meu grande amorrr", "Lieninha",
                 "o livro retrato sobre o amor da autora", cat1);
 
         cat1.getLivros().addAll(Arrays.asList(l1));

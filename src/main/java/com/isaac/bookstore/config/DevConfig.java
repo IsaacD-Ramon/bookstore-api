@@ -9,7 +9,8 @@ import org.springframework.context.annotation.Profile;
 import com.isaac.bookstore.service.DBService;
 
 
-@Configuration(proxyBeanMethods = false)
+
+@Configuration
 @Profile("dev")
 public class DevConfig {
 
